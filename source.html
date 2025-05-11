@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veloce Kicks | Lightning-Fast Sneaker Drops</title>
+    <link rel="icon" type="image/png" href="http://localhost:3001/output_images/maiwym89-lrf850q6/favicon-sneaker-icon_32x32.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Space+Grotesk:wght@500;700&display=swap');
+        
+        :root {
+            --primary: #0066FF;
+            --primary-dark: #0044CC;
+            --black: #000000;
+            --white: #FFFFFF;
+            --accent: #00FF7F;
+            --gray: #1A1A1A;
+            --light-gray: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html, body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--black);
+            color: var(--white);
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Header */
+        header {
+            background-color: rgba(0, 0, 0, 0.9);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo img {
+            height: 40px;
+        }
+        
+        .logo-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 24px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        nav a:hover {
+            color: var(--accent);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--accent);
+            color: var(--black);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 102, 255, 0.4);
+        }
+        
+        .btn-accent {
+            background-color: var(--accent);
+            color: var(--black);
+        }
+        
+        .btn-accent:hover {
+            background-color: #00E676;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 127, 0.4);
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('http://localhost:3001/output_images/maiwym89-lrf850q6/sneaker-hero-background_1280x720.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+        }
+        
+        .hero-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 64px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .countdown-item {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            min-width: 80px;
+            text-align: center;
+            backdrop-filter: blur(5px);
+        }
+        
+        .countdown-number {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 5px;
+        }
+        
+        .countdown-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        /* Featured Drop */
+        .featured-drop {
+            padding: 100px 0;
+            background-color: var(--black);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-header h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--white);
+        }
+        
+        .section-header p {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .sneaker-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .sneaker-card {
+            background-color: var(--gray);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .sneaker-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 102, 255, 0.2);
+        }
+        
+        .sneaker-image {
+            height: 250px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .sneaker-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .sneaker-card:hover .sneaker-image img {
+            transform: scale(1.05);
+        }
+        
+        .rarity-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--accent);
+            color: var(--black);
+            padding: 5px 10;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+        
+        .sneaker-info {
+            padding: 20px;
+        }
+        
+        .sneaker-info h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .sneaker-price {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+        
+        .sneaker-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .btn-small {
+            padding: 8px 15px;
+            font-size: 12px;
+        }
+        
+        .verification-badge {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 10px;
+        }
+        
+        /* Instagram Feed */
+        .instagram-feed {
+            padding: 80px 0;
+            background-color: var(--gray);
+        }
+        
+        .instagram-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .instagram-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 250px;
+        }
+        
+        .instagram-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .instagram-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .instagram-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            display: flex;
+            align-items: flex-end;
+            padding: 15px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .instagram-item:hover .instagram-overlay {
+            opacity: 1;
+        }
+        
+        .instagram-caption {
+            color: var(--white);
+            font-size: 14px;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 100px 0;
+            background-color: var(--black);
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background-color: var(--gray);
+            border-radius: 15px;
+            padding: 30px;
+            position: relative;
+        }
+        
+        .testimonial-quote {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--gray);
+            padding: 60px 0 30px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h4 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column a:hover {
+            color: var(--accent);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+        
+        /* Cart Modal */
+        .cart-modal {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100vh;
+            background-color: var(--gray);
+            z-index: 2000;
+            transition: right 0.3s ease;
+            padding: 30px;
+            overflow-y: auto;
+        }
+        
+        .cart-modal.active {
+            right: 0;
+        }
+        
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .cart-header h3 {
+            font-size: 24px;
+        }
+        
+        .close-cart {
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .cart-items {
+            margin-bottom: 30px;
+        }
+        
+        .cart-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .cart-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .cart-item-details {
+            flex: 1;
+        }
+        
+        .cart-item-details h4 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        
+        .cart-item-price {
+            font-size: 14px;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+        
+        .cart-item-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .quantity-btn {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: var(--white);
+            cursor: pointer;
+        }
+        
+        .quantity {
+            width: 30px;
+            text-align: center;
+        }
+        
+        .remove-item {
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            font-size: 12px;
+        }
+        
+        .cart-total {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            font-size: 18px;
+            font-weight: 700;
+        }
+        
+        .checkout-btn {
+            width: 100%;
+            margin-top: 20px;
+        }
+        
+        /* Animations */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 48px;
+            }
+            
+            .sneaker-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cart-modal {
+                width: 350px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .countdown-item {
+                min-width: 60px;
+            }
+            
+            .countdown-number {
+                font-size: 24px;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .cart-modal {
+                width: 100%;
+                right: -100%;
+            }
+        }
+    </style>
+
+<base target="_self">
+
+
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="http://localhost:3001/output_images/maiwym89-lrf850q6/veloce-kicks-logo_150x150.png" alt="Veloce Kicks Logo">
+                <span class="logo-text">Veloce Kicks</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#drops">Drops</a></li>
+                    <li><a href="#collections">Collections</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <div class="cart-icon">
+                    <img src="http://localhost:3001/output_images/maiwym89-lrf850q6/shopping-cart-icon_24x24.png" alt="Cart">
+                    <span class="cart-count">0</span>
+                </div>
+                <button class="btn btn-primary">Sign In</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Lightning-Fast Drops. Unstoppable Style.</h1>
+                <p>Get exclusive access to limited-edition sneakers before they sell out. Authenticity guaranteed with blockchain verification.</p>
+                
+                <div class="countdown">
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="days">00</div>
+                        <div class="countdown-label">Days</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="hours">00</div>
+                        <div class="countdown-label">Hours</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="minutes">00</div>
+                        <div class="countdown-label">Minutes</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="seconds">00</div>
+                        <div class="countdown-label">Seconds</div>
+                    </div>
+                </div>
+                
+                <div class="hero-buttons">
+                    <button class="btn btn-accent">Shop the Drop</button>
+                    <button class="btn btn-primary">Learn More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Drop -->
+    <section class="featured-drop" id="drops">
+        <div class="container">
+            <div class="section-header">
+                <h2>This Week's Heat</h2>
+                <p>Limited quantities available. Once they're gone, they're gone.</p>
+            </div>
+            
+            <div class="sneaker-grid">
+                <!-- Sneaker 1 -->
+                <div class="sneaker-card">
+                    <div class="sneaker-image">
+                        <img src="http://localhost:3001/output_images/maiwym89-lrf850q6/limited-edition-sneaker-1_800x600.png" alt="Limited Edition Sneaker 1" class="floating">
+                        <span class="rarity-badge">Only 50 Pairs</span>
+                    </div>
+                    <div class="sneaker-info">
+                        <h3>Veloce Ultra Boost</h3>
+                        <div class="sneaker-price">$249.99</div>
+                        <div class="verification-badge">
+                            <img src="http://localhost:3001/output_images/maiwym89-lrf850q6/blockchain-icon_16x16.png" alt="Verified">
+                            <span>Blockchain Verified</span>
+                        </div>
+                        <div class="sneaker-actions">
+                            <button class="btn btn-primary btn-small">Quick Buy</button>
+                            <button class="btn btn-accent btn-small add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sneaker 2 -->
+                <div class="sneaker-card">
+                    <div class="sneaker-image">
+                        <img src="http://localhost:3001/output_images/maiwym89-lrf850q6/limited-edition-sneaker-2_800x600.png" alt="Limited Edition Sneaker 2" class="floating">
+                        <span class="rarity-badge">Only 75 Pairs</span>
+                    </div>
+                    <div class="sneaker-info">
+                        <h3>Neon React X</h3>
+                        <div class="sneaker-price">$219.99</div>
+                        <div class="verification-badge">
+                            <img src="http://localhost:3001/output_images/maiwym89-lrf850q6/blockchain-icon_16x16.png" alt="Verified">
+                            <span>Blockchain Verified</span>
+                        </div>
+                        <div class="sneaker-actions">
+                            <button class="btn btn-primary btn-small">Quick Buy</button>
+                            <button class="btn btn-accent btn-small add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sneaker 3 -->
+                <div class="sneaker-card">
+                    <div class="sneaker-image">
+                        <img src="http://localhost:3001/output_images/maiwym89-lrf850q6/limited-edition-sneaker-3_800x600.png" alt="Limited Edition Sneaker 3" class="floating">
+                        <span class="rarity-badge">Only 30 Pairs</span>
+                    </div>
+                    <div class="sneaker-info">
+                        <h3>Quantum Runner</h3>
+                        <div class="sneaker-price">$279.99</div>
+                        <div class="verification-badge">
+                            <img src="http://localhost:3001/output_images/maiwym89-lrf850q6/blockchain-icon_16x16.png" alt="Verified">
+                            <span>Blockchain Verified</span>
+                        </div>
+                        <div class="sneaker-actions">
+                            <button class="btn btn-primary btn-small">Quick Buy</button>
+                            <button class="btn btn-accent btn-small add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sneaker 4 -->
+                <div class="sneaker-card">
+                    <div class="sneaker-image">
+                        <img src="http://localhost:3001/output_images/maiwym89-lrf850q6/limited-edition-sneaker-4_800x600.png" alt="Limited Edition Sneaker 4" class="floating">
+                        <span class="rarity-badge">Only 100 Pairs</span>
+                    </div>
+                    <div class="sneaker-info">
+                        <h3>Velocity 99</h3>
+                        <div class="sneaker-price">$199.99</div>
+                        <div class="verification-badge">
+                            <img src="http://localhost:3001/output_images/maiwym89-lrf850q6/blockchain-icon_16x16.png" alt="Verified">
+                            <span>Blockchain Verified</span>
+                        </div>
+                        <div class="sneaker-actions">
+                            <button class="btn btn-primary btn-small">Quick Buy</button>
+                            <button class="btn btn-accent btn-small add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram Feed -->
+    <section class="instagram-feed" id="collections">
+        <div class="container">
+            <div class="section-header">
+                <h2>#VeloceKicks</h2>
+                <p>See what our community is saying about our drops</p>
+            </div>
+            
+            <div class="instagram-grid">
+                <!-- Instagram Post 1 -->
+                <div class="instagram-item">
+                    <img src="http://localhost:3001/output_images/maiwym89-lrf850q6/instagram-sneaker-1_400x400.png" alt="Instagram Post 1">
+                    <div class="instagram-overlay">
+                        <p class="instagram-caption">"Copped these in 72hrs! Veloce is LEGIT."</p>
+                    </div>
+                </div>
+                
+                <!-- Instagram Post 2 -->
+                <div class="instagram-item">
+                    <img src="http://localhost:3001/output_images/maiwym89-lrf850q6/instagram-sneaker-2_400x400.png" alt="Instagram Post 2">
+                    <div class="instagram-overlay">
+                        <p class="instagram-caption">"Fastest delivery ever! 🔥"</p>
+                    </div>
+                </div>
+                
+                <!-- Instagram Post 3 -->
+                <div class="instagram-item">
+                    <img src="http://localhost:3001/output_images/maiwym89-lrf850q6/instagram-sneaker-3_400x400.png" alt="Instagram Post 3">
+                    <div class="instagram-overlay">
+                        <p class="instagram-caption">"The verification process is next level."</p>
+                    </div>
+                </div>
+                
+                <!-- Instagram Post 4 -->
+                <div class="instagram-item">
+                    <img src="http://localhost:3001/output_images/maiwym89-lrf850q6/instagram-sneaker-4_400x400.png" alt="Instagram Post 4">
+                    <div class="instagram-overlay">
+                        <p class="instagram-caption">"Already got my next drop alert set!"</p>
+                    </div>
+                </div>
+                
+                <!-- Instagram Post 5 -->
+                <div class="instagram-item">
+                    <img src="http://localhost:3001/output_images/maiwym89-lrf850q6/instagram-sneaker-5_400x400.png" alt="Instagram Post 5">
+                    <div class="instagram-overlay">
+                        <p class="instagram-caption">"No bots, just fast hands here!"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>Verified Reviews</h2>
+                <p>Real customers, real experiences</p>
+            </div>
+            
+            <div class="testimonial-grid">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"I've never received sneakers this fast before. Ordered on Monday, had them in hand by Wednesday. The blockchain verification gave me complete peace of mind about authenticity."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="http://localhost:3001/output_images/maiwym89-lrf850q6/testimonial-avatar-1_100x100.png" alt="Alex R.">
+                        </div>
+                        <div class="author-info">
+                            <h4>Alex R.</h4>
+                            <p>Verified Buyer</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"As a longtime sneakerhead, I appreciate how Veloce Kicks levels the playing field. No bots, no crazy markups, just fair access to limited drops with lightning-fast shipping."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="http://localhost:3001/output_images/maiwym89-lrf850q6/testimonial-avatar-2_100x100.png" alt="Jamal T.">
+                        </div>
+                        <div class="author-info">
+                            <h4>Jamal T.</h4>
+                            <p>Sneaker Collector</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"The rarity metrics are a game-changer. Knowing exactly how limited a drop is helps me make better purchasing decisions. Plus, the 3-day shipping is insane!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="http://localhost:3001/output_images/maiwym89-lrf850q6/testimonial-avatar-3_100x100.png" alt="Sarah K.">
+                        </div>
+                        <div class="author-info">
+                            <h4>Sarah K.</h4>
+                            <p>Streetwear Enthusiast</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>Shop</h4>
+                    <ul>
+                        <li><a href="#">All Drops</a></li>
+                        <li><a href="#">New Arrivals</a></li>
+                        <li><a href="#">Most Wanted</a></li>
+                        <li><a href="#">Upcoming</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>About</h4>
+                    <ul>
+                        <li><a href="#">Our Story</a></li>
+                        <li><a href="#">Authentication</a></li>
+                        <li><a href="#">Sustainability</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Help</h4>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Shipping</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="#"><img src="http://localhost:3001/output_images/maiwym89-lrf850q6/instagram-icon_24x24.png" alt="Instagram"></a>
+                        <a href="#"><img src="http://localhost:3001/output_images/maiwym89-lrf850q6/twitter-icon_24x24.png" alt="Twitter"></a>
+                        <a href="#"><img src="http://localhost:3001/output_images/maiwym89-lrf850q6/facebook-icon_24x24.png" alt="Facebook"></a>
+                        <a href="#"><img src="http://localhost:3001/output_images/maiwym89-lrf850q6/discord-icon_24x24.png" alt="Discord"></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2025 Veloce Kicks. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal">
+        <div class="cart-header">
+            <h3>Your Cart</h3>
+            <button class="close-cart">×</button>
+        </div>
+        
+        <div class="cart-items">
+            <!-- Cart items will be added here dynamically -->
+        </div>
+        
+        <div class="cart-total">
+            <span>Total:</span>
+            <span id="cart-total-amount">$0.00</span>
+        </div>
+        
+        <button class="btn btn-accent checkout-btn">Proceed to Checkout</button>
+    </div>
+
+    
+          
+                
+          
+              
